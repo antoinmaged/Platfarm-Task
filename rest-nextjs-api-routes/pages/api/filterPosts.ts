@@ -21,6 +21,21 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
         {
           Field_Unit: { contains: searchString },
         },
+        {
+          Time: { contains: searchString },
+        },
+        {
+          Activity: { contains: searchString },
+        },
+        {
+          Category: { contains: searchString },
+        },
+        {
+          Sub_Category: { contains: searchString },
+        },
+        {
+          Created_by: { contains: searchString },
+        },
       ],
     },
   })

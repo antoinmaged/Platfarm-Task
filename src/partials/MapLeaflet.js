@@ -1,8 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
-import GeoTIFF from 'geotiff';
-const { fromUrl, fromUrls, fromArrayBuffer, fromBlob } = GeoTIFF;
 
 // import overlay1 from '../images/Overlay/OverlayMap1.tiff';
 // import overlay2 from '../images/Overlay/overlay2.tiff'
@@ -10,20 +8,12 @@ const { fromUrl, fromUrls, fromArrayBuffer, fromBlob } = GeoTIFF;
 // import overlay4 from '../images/Overlay/overlay4.tiff'
 function MapLeaflet() {
 
-  var url = "../images/Overlay/OverlayMap1.tiff";
-  fromUrl(url)
-  .then(tiff => { /* ... */});
-
-const image =  tiff.getImage(); // by default, the first image is read.
-console.log(image);
-
   return (
   <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
     <TileLayer
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
-    <div id='overlay'>   </div>
     <Marker position={[51.505, -0.09]}>
       <Popup>
         A pretty CSS3 popup. <br /> Easily customizable.
