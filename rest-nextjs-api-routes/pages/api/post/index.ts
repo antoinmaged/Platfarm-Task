@@ -6,13 +6,21 @@ import prisma from '../../../lib/prisma'
 // Required fields in body: title, authorEmail
 // Optional fields in body: content
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
-  const { title, content, authorEmail } = req.body
+  if (req.method === 'POST') {
+
+  const { id, Time, Field, Field_Unit, Activity,Category, Sub_Category, Created_by } = req.body
   const result = await prisma.post.create({
     data: {
-      title: title,
-      content: content,
-      author: { connect: { email: authorEmail } },
+      id : id,
+      Time: Time,
+      Field:Field,
+      Field_Unit:Field_Unit,
+      Activity:Activity,
+      Category: Category,
+      Sub_Category: Sub_Category,
+      Created_by: Created_by,
     },
   })
   res.json(result)
+}
 }

@@ -1,8 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import prisma from '../../../lib/prisma'
+import NextCors from 'nextjs-cors';
 
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+ });
+//  res.json("post")
+
+
   const postId = req.query.id
 
   if (req.method === 'GET') {
@@ -19,8 +29,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 // GET /api/post/:id
 async function handleGET(postId, res) {
   const post = await prisma.post.findUnique({
-    where: { id: Number(postId) },
-    include: { author: true },
+    where: { id: Number(postId) }
   })
   res.json(post)
 }

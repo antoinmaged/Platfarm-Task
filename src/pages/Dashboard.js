@@ -15,7 +15,7 @@ function Dashboard() {
 
   return (
     <div className="flex h-screen overflow-hidden">
-
+ 
       {/* Sidebar */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -61,16 +61,19 @@ function Dashboard() {
               <DashboardSection3 />
               {/* Table (Top Channels) */}
               <DashboardSection4 />
+
             </div>
 
           </div>
+
+
         </main>
 
-
       </div>
-
-      <MapLeaflet />
-
+      <div className="height-limit">
+        <MapLeaflet />
+        </div>
+     
     </div>
     
   );
